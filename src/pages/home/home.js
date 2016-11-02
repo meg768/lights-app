@@ -66,20 +66,24 @@ class Device extends React.Component {
 		var buttonStyle = {};
 		buttonStyle.marginLeft = '0.2em';
 		buttonStyle.marginRight = '0.2em';
+		//buttonStyle['-webkit-mask-box-image'] = require("./images/lights-on.svg");
+		//buttonStyle['-webkit-mask-box-image'] = require("./images/lights-on.svg");
+
+
 		return (
 			<ListGroupItem href=''>
 				<div style={{display:'table'}}>
 					<div style={{display:'table-cell', width:'100%'}}>
 						{this.props.name}
 					</div>
-					<div style={{display:'table-cell'}}>
-						<Button style={buttonStyle} onClick={this.changeState.bind(this, 'OFF')} bsStyle="warning">
-							<img src={require('./images/lights-off.svg')}/>
+					<div className='foo' style={{display:'table-cell'}}>
+						<Button style={buttonStyle} onClick={this.changeState.bind(this, 'ON')} bsStyle="warning">
+							PÅ
 						</Button>
 					</div>
 					<div style={{display:'table-cell'}}>
-						<Button style={buttonStyle} onClick={this.changeState.bind(this, 'ON')} bsStyle="warning">
-							<img src={require('./images/lights-on.svg')}/>
+						<Button style={buttonStyle} onClick={this.changeState.bind(this, 'OFF')} bsStyle="warning">
+							AV
 						</Button>
 					</div>
 				</div>
@@ -103,32 +107,15 @@ module.exports = class Home extends React.Component {
 
 
 
-	setDeviceState(device, state) {
-		if (state == 'ON')
-			socket.emit('turnOn', {name:device});
-		if (state == 'OFF')
-			socket.emit('turnOff', {name:device});
-	};
 
 	renderForm() {
 		return (
-			<Form style={{padding:'1em'}}>
-				<FormGroup style={{borderBottom:'1px solid black'}}>
-					<h2>
-						Mina lampor
-					</h2>
-				</FormGroup>
-				<FormGroup bsSize='small'>
-					<FormControl.Static>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lacinia tincidunt nunc a tempor. Praesent.
-					</FormControl.Static>
-				</FormGroup>
-
+			<Form style={{padding:'1em', fontSize:'125%'}}>
 
 				<FormGroup>
 					<ListGroup>
 						<DeviceHeader name='Kontoret'/>
-						<Device name='Hela kontoret' device='FK-01-01'/>
+						<Device name='Alla lampor' device='FK-01-01'/>
 						<Device name='Sänglampan' device='FK-01-02'/>
 						<Device name='Övriga lampor' device='FK-01-03'/>
 					</ListGroup>
@@ -136,9 +123,8 @@ module.exports = class Home extends React.Component {
 					<ListGroup>
 						<DeviceHeader name='Bottenvåningen'/>
 						<Device name='Matrummet' device='VS-03'/>
-						<Device name='TV-rummet?' device='VS-02'/>
-						<Device name='Terassen' device='VS-01'/>
 						<Device name='Stora rummet' device='VS-04'/>
+						<Device name='Terassen' device='VS-01'/>
 					</ListGroup>
 					<ListGroup>
 						<DeviceHeader name='Biorummet'/>
