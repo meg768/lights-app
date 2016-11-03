@@ -8,7 +8,7 @@ import {Page} from '../../components/page.js'
 
 var io = require('socket.io-client');
 
-var url = sprintf('http://app-o.se:3000/tellstick');
+var url = sprintf('http://85.24.190.138:3002/tellstick');
 console.log('Connecting to %s...', url);
 var socket = io.connect(url);
 
@@ -51,14 +51,15 @@ class Device extends React.Component {
 
 	static defaultProps = {
 		device:'XXX',
-		name:'Noname'
+		name:'Noname',
+		mode: 'onoff'
 	};
 
 	changeState(state) {
 		if (state == 'ON')
-			socket.emit('turnOn', {name:this.props.device});
+			socket.emit('turnOn', this.props.device);
 		if (state == 'OFF')
-			socket.emit('turnOff', {name:this.props.device});
+			socket.emit('turnOff', this.props.device);
 
 	};
 
@@ -66,9 +67,6 @@ class Device extends React.Component {
 		var buttonStyle = {};
 		buttonStyle.marginLeft = '0.2em';
 		buttonStyle.marginRight = '0.2em';
-		//buttonStyle['-webkit-mask-box-image'] = require("./images/lights-on.svg");
-		//buttonStyle['-webkit-mask-box-image'] = require("./images/lights-on.svg");
-
 
 		return (
 			<ListGroupItem href=''>
@@ -76,13 +74,13 @@ class Device extends React.Component {
 					<div style={{display:'table-cell', width:'100%'}}>
 						{this.props.name}
 					</div>
-					<div className='foo' style={{display:'table-cell'}}>
-						<Button style={buttonStyle} onClick={this.changeState.bind(this, 'ON')} bsStyle="warning">
+					<div style={{display:'table-cell'}}>
+						<Button disabled={this.props.mode == 'off'} style={buttonStyle} onClick={this.changeState.bind(this, 'ON')} bsStyle="warning">
 							PÅ
 						</Button>
 					</div>
 					<div style={{display:'table-cell'}}>
-						<Button style={buttonStyle} onClick={this.changeState.bind(this, 'OFF')} bsStyle="warning">
+						<Button disabled={this.props.mode == 'on'} style={buttonStyle} onClick={this.changeState.bind(this, 'OFF')} bsStyle="warning">
 							AV
 						</Button>
 					</div>
@@ -116,7 +114,7 @@ module.exports = class Home extends React.Component {
 					<ListGroup>
 						<DeviceHeader name='Kontoret'/>
 						<Device name='Alla lampor' device='FK-01-01'/>
-						<Device name='Sänglampan' device='FK-01-02'/>
+						<Device name='Läslampa' device='FK-01-02'/>
 						<Device name='Övriga lampor' device='FK-01-03'/>
 					</ListGroup>
 
@@ -131,6 +129,11 @@ module.exports = class Home extends React.Component {
 						<Device name='Alla lampor' device='FK-02-01'/>
 						<Device name='Främre lampor' device='FK-02-02'/>
 						<Device name='Bakre lampor' device='FK-02-03'/>
+					</ListGroup>
+					<ListGroup>
+						<DeviceHeader name='Simulering'/>
+						<Device name='Skymningsrelä' device='SR-01'/>
+						<Device name='Rörelse i biorummet' device='RV-02' mode='on'/>
 					</ListGroup>
 
 				</FormGroup>
