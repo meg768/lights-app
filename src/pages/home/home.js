@@ -67,11 +67,15 @@ class Device extends React.Component {
 		var buttonStyle = {};
 		buttonStyle.marginLeft = '0.2em';
 		buttonStyle.marginRight = '0.2em';
+		buttonStyle.borderRadius = '2em';
+		buttonStyle.width = '3.5em';
+		buttonStyle.height = '3.5em';
+		buttonStyle.fontWeight = 'bold';
 
 		return (
 			<ListGroupItem href=''>
 				<div style={{display:'table'}}>
-					<div style={{display:'table-cell', width:'100%'}}>
+					<div style={{display:'table-cell', width:'100%', verticalAlign:'middle', fontWeight:'bold'}}>
 						{this.props.name}
 					</div>
 					<div style={{display:'table-cell'}}>
@@ -108,7 +112,7 @@ module.exports = class Home extends React.Component {
 
 	renderForm() {
 		return (
-			<Form style={{padding:'1em', fontSize:'125%'}}>
+			<Form style={{paddingTop:'1em', paddingBottom:'1em', fontSize:'125%'}}>
 
 				<FormGroup>
 					<ListGroup>
@@ -154,7 +158,7 @@ module.exports = class Home extends React.Component {
 					</Row>
 					<Row>
 						<Col sm={10} smOffset={1} md={8} mdOffset={2}>
-							{this.renderForm()};
+							{this.renderForm()}
 						</Col>
 					</Row>
 				</Grid>
