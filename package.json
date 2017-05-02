@@ -4,10 +4,10 @@
   "description": "Front end for lights",
   "main": "index.js",
   "scripts": {
-	"watch": "watchify ./src/routes/index.js -v -d -t [babelify --presets [ es2015 react stage-2] ] -t node-lessify -t imgurify -o index.js",
-	"build": "browserify ./src/routes/index.js -v -d  -t  -t [babelify --presets [ es2015 react stage-2] ] -t node-lessify -t imgurify | uglifyjs -c > index.js",
-	"upload": "scp index.html index.js icon.png admin@nestor:www/meg/lampor",
-	"test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "watchify ./src/routes/index.js -v -d -t [babelify --presets [ es2015 react stage-2] ] -t node-lessify -t imgurify -o index.js",
+    "build": "browserify ./src/routes/index.js -v -d  -t  -t [babelify --presets [ es2015 react stage-2] ] -t node-lessify -t imgurify | uglifyjs -c > index.js",
+    "upload": "scp index.html index.js icon.png admin@nestor:www/meg/lampor",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,8 @@
     "uglify-js": "^2.7.3",
     "urify": "^2.0.2",
     "yow": "^1.0.26"
+  },
+  "devDependencies": {
+    "envify": "^4.0.0"
   }
 }
