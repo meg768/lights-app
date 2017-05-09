@@ -23,7 +23,7 @@ watch:
 	watchify $(APP_SOURCE) -v -d  $(BABELIFY) $(LESSIFY) $(IMGURIFY) -o $(APP_CONTENT)
 
 build:
-	browserify $(APP_SOURCE) -v -d $(ENVIFY) $(BABELIFY) $(LESSIFY) -t $(IMGURIFY) | $(UGLYFY) > $(APP_CONTENT)
+	browserify $(APP_SOURCE) -v $(ENVIFY) $(BABELIFY) $(LESSIFY) -t $(IMGURIFY) | $(UGLYFY) > $(APP_CONTENT)
 
 upload:
 	scp $(APP_FILES) $(WEB_USER)@$(WEB_SERVER):$(WEB_LOCATION)

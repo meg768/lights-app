@@ -133,12 +133,16 @@ module.exports = class Home extends React.Component {
 						<Device name='Alla lampor' device='FK-02-01'/>
 						<Device name='Främre lampor' device='FK-02-02'/>
 						<Device name='Bakre lampor' device='FK-02-03'/>
+						<Device name='Rörelse i biorummet' device='RV-02' mode='on'/>
+					</ListGroup>
+					<ListGroup>
+						<DeviceHeader name='Snickarrummet'/>
+						<Device name='Saftblandare' device='VS-02'/>
 					</ListGroup>
 					<ListGroup>
 						<DeviceHeader name='Övrigt'/>
 						<Device name='Larm' device='VS-05'/>
 						<Device name='Skymningsrelä' device='SR-01'/>
-						<Device name='Rörelse i biorummet' device='RV-02' mode='on'/>
 					</ListGroup>
 
 				</FormGroup>
