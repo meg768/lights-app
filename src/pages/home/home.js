@@ -8,7 +8,8 @@ import {Page} from '../../components/page.js'
 
 var io = require('socket.io-client');
 
-var url = sprintf('http://85.24.190.138:3002/tellstick');
+//var url = sprintf('http://85.24.190.138:3002/tellstick');
+var url = sprintf('http://app-o.se/tellstick');
 console.log('Connecting to %s...', url);
 var socket = io.connect(url);
 
