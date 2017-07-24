@@ -42,6 +42,7 @@
     "yow": "^1.0.26"
   },
   "devDependencies": {
+    "babelify": "^7.3.0",
     "envify": "^4.0.0"
   }
 }
